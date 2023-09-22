@@ -23,6 +23,7 @@ export class UserForm extends Component {
       step: step + 1,
     });
   };
+  
 
   // go back to the previous step
   prevStep = () => {
@@ -60,6 +61,7 @@ export class UserForm extends Component {
        
               <FormPersonalDetails
             nextStep={this.nextStep}
+            prevStep={this.prevStep}
             handleChange={this.handleChange}
             values={values}
           />
@@ -70,17 +72,19 @@ export class UserForm extends Component {
           <Confirm
             nextStep={this.nextStep}
             prevStep={this.prevStep}
+            handleChange={this.handleChange}
             values={values}
           />
-        )
+        );
         case 4:
         return (
           <Success
             nextStep={this.nextStep}
             prevStep={this.prevStep}
+            handleChange={this.handleChange}
             values={values}
           />
-        )
+        );
 
 
       default:
