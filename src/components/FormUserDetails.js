@@ -1,23 +1,13 @@
 
+// import React, { Component } from "react";
+// import { AppBar, TextField, Button } from "@mui/material";
+// import { ThemeProvider, createTheme } from "@mui/material/styles";
 import React, { Component } from "react";
-import { AppBar, TextField, Button } from "@mui/material";
-import { ThemeProvider, createTheme } from "@mui/material/styles";
-
-// Define a custom theme
-const theme = createTheme({
-  palette: {
-    primary: {
-      main: "#007bff", // Change the primary color as needed
-    },
-  },
-  // Add more theme customizations as needed
-});
-
-const styles = {
-  button: {
-    margin: 15,
-  },
-};
+import Dialog from "@material-ui/core/Dialog";
+import AppBar from "@material-ui/core/AppBar";
+import { ThemeProvider as MuiThemeProvider } from "@material-ui/core/styles";
+import TextField from "@material-ui/core/TextField";
+import Button from "@material-ui/core/Button";
 
 export class FormUserDetails extends Component {
   continue = (e) => {
@@ -27,42 +17,44 @@ export class FormUserDetails extends Component {
 
   render() {
     const { values, handleChange } = this.props;
-
     return (
-      <ThemeProvider theme={theme}>
-        <React.Fragment>
-          <AppBar title="Enter User Details" />
-          <TextField
-            helperText="Enter Your First Name"
-            label="First Name" // Use label instead of floatingLabelText
-            onChange={handleChange("firstName")}
-            defaultValue={values.firstName}
-          />
-          <br />
-          <TextField
-            helperText="Enter Your Last Name"
-            label="Last Name" // Use label instead of floatingLabelText
-            onChange={handleChange("lastName")}
-            defaultValue={values.lastName}
-          />
-          <br />
-          <TextField
-            helperText="Enter Your Email"
-            label="Email" // Use label instead of floatingLabelText
-            onChange={handleChange("email")}
-            defaultValue={values.email}
-          />
-          <br />
-          <Button
-            variant="contained"
-            color="primary"
-            style={styles.button}
-            onClick={this.continue}
-          >
-            Continue
-          </Button>
-        </React.Fragment>
-      </ThemeProvider>
+      <MuiThemeProvider>
+        <>
+          <Dialog open fullWidth maxWidth="sm">
+            <AppBar title="Enter User Details" />
+            <TextField
+              placeholder="Enter Your First Name"
+              label="First Name"
+              onChange={handleChange("firstName")}
+              defaultValue={values.firstName}
+              margin="normal"
+              fullWidth
+            />
+            <br />
+            <TextField
+              placeholder="Enter Your Last Name"
+              label="Last Name"
+              onChange={handleChange("lastName")}
+              defaultValue={values.lastName}
+              margin="normal"
+              fullWidth
+            />
+            <br />
+            <TextField
+              placeholder="Enter Your Email"
+              label="Email"
+              onChange={handleChange("email")}
+              defaultValue={values.email}
+              margin="normal"
+              fullWidth
+            />
+            <br />
+            <Button color="primary" variant="contained" onClick={this.continue}>
+              Continue
+            </Button>
+          </Dialog>
+        </>
+      </MuiThemeProvider>
     );
   }
 }

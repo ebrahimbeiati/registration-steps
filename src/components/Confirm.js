@@ -1,8 +1,9 @@
 import React, { Component } from "react";
-import { Dialog } from "@mui/material";
-import { AppBar,  Button } from "@mui/material";
-import { ThemeProvider } from "@mui/material/styles";
-import { ListItem,List,ListItemText } from "@mui/material";
+import Dialog from "@material-ui/core/Dialog";
+import AppBar from "@material-ui/core/AppBar";
+import { ThemeProvider as MuiThemeProvider } from "@material-ui/core/styles";
+import { List, ListItem, ListItemText } from "@material-ui/core/";
+import Button from "@material-ui/core/Button";
 
 export class Confirm extends Component {
   continue = (e) => {
@@ -21,7 +22,7 @@ export class Confirm extends Component {
       values: { firstName, lastName, email, occupation, city, bio },
     } = this.props;
     return (
-      <ThemeProvider>
+      <MuiThemeProvider>
         <>
           <Dialog open fullWidth maxWidth="sm">
             <AppBar title="Confirm User Data" />
@@ -56,7 +57,7 @@ export class Confirm extends Component {
             </Button>
           </Dialog>
         </>
-      </ThemeProvider>
+      </MuiThemeProvider>
     );
   }
 }
